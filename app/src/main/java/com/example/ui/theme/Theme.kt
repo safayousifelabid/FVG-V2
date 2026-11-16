@@ -1,0 +1,91 @@
+package com.example.ui.theme
+
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
+
+private val FvgLightColorScheme = lightColorScheme(
+    primary = FvgDeepGreen,
+    onPrimary = FvgWarmIvory,
+    primaryContainer = FvgSoftCream,
+    onPrimaryContainer = FvgDeepGreen,
+    secondary = FvgWarmGold,
+    onSecondary = FvgDeepGreen,
+    secondaryContainer = Color(0xFFF7E7C8),
+    onSecondaryContainer = FvgDeepGreen,
+    tertiary = FvgSoftTeal,
+    onTertiary = Color.White,
+    background = FvgWarmIvory,
+    onBackground = FvgInkDark,
+    surface = FvgCardWhite,
+    onSurface = FvgInkDark,
+    surfaceVariant = FvgSoftCream,
+    onSurfaceVariant = FvgMutedGrey,
+    surfaceContainerLow = FvgWarmIvory,
+    surfaceContainer = FvgSoftCream,
+    surfaceContainerHigh = FvgWarmStone,
+    outline = FvgWarmStone,
+    outlineVariant = Color(0xFFE7E1D3),
+    error = FvgNegative,
+    onError = Color.White
+)
+
+private val FvgDarkColorScheme = darkColorScheme(
+    primary = FvgWarmGold,
+    onPrimary = FvgDeepGreen,
+    primaryContainer = FvgForestGreen,
+    onPrimaryContainer = FvgWarmIvory,
+    secondary = FvgSoftTeal,
+    onSecondary = Color.White,
+    secondaryContainer = FvgDarkSurfaceHigh,
+    onSecondaryContainer = FvgWarmGold,
+    tertiary = FvgAntiqueGold,
+    onTertiary = Color.White,
+    background = FvgDarkBg,
+    onBackground = FvgDarkText,
+    surface = FvgDarkSurface,
+    onSurface = FvgDarkText,
+    surfaceVariant = FvgDarkSurfaceHigh,
+    onSurfaceVariant = FvgDarkSubText,
+    surfaceContainerLow = FvgDarkBg,
+    surfaceContainer = FvgDarkSurface,
+    surfaceContainerHigh = FvgDarkSurfaceHigh,
+    outline = FvgDarkOutline,
+    outlineVariant = FvgForestGreen,
+    error = Color(0xFFF2B8B5),
+    onError = Color(0xFF601410)
+)
+
+private val FvgShapes = Shapes(
+    small = RoundedCornerShape(12.dp),
+    medium = RoundedCornerShape(18.dp),
+    large = RoundedCornerShape(24.dp),
+    extraLarge = RoundedCornerShape(28.dp)
+)
+
+@Composable
+fun FvgTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    isArabic: Boolean = false,
+    content: @Composable () -> Unit
+) {
+    val colorScheme = if (darkTheme) FvgDarkColorScheme else FvgLightColorScheme
+    val direction = if (isArabic) LayoutDirection.Rtl else LayoutDirection.Ltr
+    CompositionLocalProvider(LocalLayoutDirection provides direction) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = fvgTypography(isArabic),
+            shapes = FvgShapes,
+            content = content
+        )
+    }
+}
