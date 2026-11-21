@@ -1,0 +1,25 @@
+{
+  "name": "FVG — Financial Vision Guide | دليل رؤيتك المالي",
+  "short_name": "FVG",
+  "description": "Management Accounting, Costing, Pricing & Financial Decision Support Platform by Zahra Yousif Elabid Wagiealla Ahmed.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAF2E8",
+  "theme_color": "#022A27",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "./assets/fvg-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/fvg_app_icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
